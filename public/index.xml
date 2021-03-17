@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>My New Hugo Site</title>
-    <link>https://xietie.github.io/</link>
+    <link>https://xiet16.github.io/</link>
     <description>Recent content on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 17 Mar 2021 19:29:21 +0800</lastBuildDate><atom:link href="https://xietie.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Mar 2021 19:29:21 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugocreate</title>
-      <link>https://xietie.github.io/post/hugocreate/</link>
+      <link>https://xiet16.github.io/post/hugocreate/</link>
       <pubDate>Wed, 17 Mar 2021 19:29:21 +0800</pubDate>
       
-      <guid>https://xietie.github.io/post/hugocreate/</guid>
+      <guid>https://xiet16.github.io/post/hugocreate/</guid>
       <description>1、装好git 和hugo
 2、新建博客站点 hugo new site myblog
 3、进入myblog/themes 文件夹，下载主题并命名文件夹 git clone https://github.com/vaga/hugo-theme-m10c.git m10c
