@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 17 Mar 2021 19:29:21 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hugocreate</title>
+      <title>Hugo_Web_Create</title>
       <link>https://xiet16.github.io/post/hugocreate/</link>
       <pubDate>Wed, 17 Mar 2021 19:29:21 +0800</pubDate>
       
@@ -17,7 +17,12 @@
 2、新建博客站点 hugo new site myblog
 3、进入myblog/themes 文件夹，下载主题并命名文件夹 git clone https://github.com/vaga/hugo-theme-m10c.git m10c
 4、在myblog 文件夹下执行 hugo server -t m10c &amp;ndash;buildDrafts
-5、在myblog 文件夹下创建md 文件 hugo new post/hugocreate.md</description>
+5、在myblog 文件夹下创建md 文件 hugo new post/hugocreate.md
+6、生成静态网页(https://github_name.github.io)要用自己名字，不然访问不了 hugo &amp;ndash;theme=m10c &amp;ndash;baseUrl=&amp;ldquo;https://xiet16.github.io&amp;rdquo; &amp;ndash;buildDrafts
+7、编译好的网页放在./public 目录下面，所有要把public文件的内容传到https://github_name.github.io.git仓库上
+8、再建一个仓库存myblog 项目就好了
+9、上传可以建一个shell脚本
+10、git 保存密码命令 git config &amp;ndash;global credential.helper store</description>
     </item>
     
   </channel>
