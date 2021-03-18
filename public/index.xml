@@ -6,7 +6,33 @@
     <description>Recent content on xietie blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Mar 2021 17:48:27 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Mar 2021 20:52:13 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SequenceList_Array</title>
+      <link>https://xiet16.github.io/post/sequencelist_array/</link>
+      <pubDate>Thu, 18 Mar 2021 20:52:13 +0800</pubDate>
+      
+      <guid>https://xiet16.github.io/post/sequencelist_array/</guid>
+      <description>顺序表和数组
+1、数组的特点：
+(1)长度固定
+(2)内存连续
+(3)是值类型
+2、假设有两组数组
+d n f l o e
+c b d n q i
+顺序表的插入：
+开辟一块空间，然后数据往后添加
+顺序表的删除：（假设要删除数组1中的f）
+找到f 后的数据，往前挪，然后删除e 对应的空间块，压缩内存
+顺序表的合并：
+开辟一块新的内存，一个个数据往后添加
+顺序表效率：
+查找：1次
+删除：最坏n次
+插入：最坏n次</description>
+    </item>
+    
     <item>
       <title>Go_tag</title>
       <link>https://xiet16.github.io/post/go_tag/</link>
