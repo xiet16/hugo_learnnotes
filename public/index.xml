@@ -2,36 +2,36 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>xietie blog</title>
-    <link>htts://xiet16.github.io/</link>
+    <link>https://xiet16.github.io/</link>
     <description>Recent content on xietie blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Mar 2021 09:29:52 +0800</lastBuildDate><atom:link href="htts://xiet16.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Mar 2021 09:29:52 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ElasticSearch</title>
-      <link>htts://xiet16.github.io/post/elasticsearch/</link>
+      <link>https://xiet16.github.io/post/elasticsearch/</link>
       <pubDate>Thu, 18 Mar 2021 09:29:52 +0800</pubDate>
       
-      <guid>htts://xiet16.github.io/post/elasticsearch/</guid>
+      <guid>https://xiet16.github.io/post/elasticsearch/</guid>
       <description>1、ElasticSearch 规范:
 2、ElasticSearch 踩过的坑:</description>
     </item>
     
     <item>
       <title>ElasticSearch</title>
-      <link>htts://xiet16.github.io/elasticsearch/</link>
+      <link>https://xiet16.github.io/elasticsearch/</link>
       <pubDate>Thu, 18 Mar 2021 09:26:38 +0800</pubDate>
       
-      <guid>htts://xiet16.github.io/elasticsearch/</guid>
+      <guid>https://xiet16.github.io/elasticsearch/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Design_Patterns</title>
-      <link>htts://xiet16.github.io/post/design_patterns/</link>
+      <link>https://xiet16.github.io/post/design_patterns/</link>
       <pubDate>Thu, 18 Mar 2021 08:51:04 +0800</pubDate>
       
-      <guid>htts://xiet16.github.io/post/design_patterns/</guid>
+      <guid>https://xiet16.github.io/post/design_patterns/</guid>
       <description>设计模式七大原则
 代码网址:
 https://github.com/xiet16/go_design_patterns
@@ -52,10 +52,10 @@ https://github.com/xiet16/go_design_patterns
     
     <item>
       <title>Hugo_Web_Create</title>
-      <link>htts://xiet16.github.io/post/hugocreate/</link>
+      <link>https://xiet16.github.io/post/hugocreate/</link>
       <pubDate>Wed, 17 Mar 2021 19:29:21 +0800</pubDate>
       
-      <guid>htts://xiet16.github.io/post/hugocreate/</guid>
+      <guid>https://xiet16.github.io/post/hugocreate/</guid>
       <description>1、装好git 和hugo
 2、新建博客站点
 hugo new site myblog
