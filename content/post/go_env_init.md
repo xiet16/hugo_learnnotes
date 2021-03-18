@@ -6,15 +6,22 @@ draft: true
 1、登陆https://studygolang.com/dl下载安装包(这里忽略安装过程)
 
 2、环境配置(开启Module和代理，不然可能更新不下来依赖包)
+
 go env -w GO111MODULE=on
+
 go env -w GOPROXY=https://goproxy.io,direct
 
 
 3、新建项目
+
 (1)首先用vscode 打开一个空文件夹,添加main.go 文件 并编辑好代码
+
 (2)在终端中执行以下命令
+
 go mod init "your_project_name"
+
 go mod tidy
+
 go mod vendor
 
 go modules 我的理解是go 项目依赖包管理。执行 go mod init "xxx" 以后
