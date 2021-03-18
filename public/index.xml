@@ -14,7 +14,11 @@
       
       <guid>https://xiet16.github.io/post/elasticsearch/</guid>
       <description>1、ElasticSearch 规范:
-2、ElasticSearch 踩过的坑:</description>
+2、ElasticSearch 踩过的坑:
+(1)es中展示的是北京时间,存的时间是utc时间
+&amp;ldquo;script&amp;rdquo;: { &amp;ldquo;source&amp;rdquo;: &amp;quot; return (new Date().getTime() - doc[&amp;lsquo;ArrivalDate&amp;rsquo;].value.toInstant().toEpochMilli() + 28800000) &amp;quot; }
+(2)es中distinc 是不准的
+&amp;ldquo;cardinality&amp;rdquo;: {&amp;ldquo;precision_threshold&amp;rdquo;: 100000,&amp;ldquo;field&amp;rdquo;: &amp;ldquo;Single_NO&amp;rdquo;}</description>
     </item>
     
     <item>
