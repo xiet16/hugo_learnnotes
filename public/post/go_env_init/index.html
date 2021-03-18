@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Go_env_init // xietie blog</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.78.2" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://xiet16.github.io/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Go_env_init"/>
+<meta name="twitter:description" content="1、登陆https://studygolang.com/dl下载安装包(这里忽略安装过程)
+2、环境配置(开启Module和代理，不然可能更新不下来依赖包) go env -w GO111MODULE=on go env -w GOPROXY=https://goproxy.io,direct
+3、新建项目 (1)首先用vscode 打开一个空文件夹,添加main.go 文件 并编辑好代码 (2)在终端中执行以下命令 go mod init &ldquo;your_project_name&rdquo; go mod tidy go mod vendor
+go modules 我的理解是go 项目依赖包管理。执行 go mod init &ldquo;xxx&rdquo; 以后 会生成一个go.mod的文件，这个文件展示的是项目所依赖的依赖包以及版本信息 所以如果要改某个包的版本，可以手动改，然后执行go mod tidy. go mod tidy 是更新依赖包命令，这里包含删除、新增、修改依赖包。go mod vendor 是讲依 赖包下载到vendor 文件夹。顺便提一下，go modules 是1.11后新加的特性之前 是GOPATH的方式"/>
+
+    <meta property="og:title" content="Go_env_init" />
+<meta property="og:description" content="1、登陆https://studygolang.com/dl下载安装包(这里忽略安装过程)
+2、环境配置(开启Module和代理，不然可能更新不下来依赖包) go env -w GO111MODULE=on go env -w GOPROXY=https://goproxy.io,direct
+3、新建项目 (1)首先用vscode 打开一个空文件夹,添加main.go 文件 并编辑好代码 (2)在终端中执行以下命令 go mod init &ldquo;your_project_name&rdquo; go mod tidy go mod vendor
+go modules 我的理解是go 项目依赖包管理。执行 go mod init &ldquo;xxx&rdquo; 以后 会生成一个go.mod的文件，这个文件展示的是项目所依赖的依赖包以及版本信息 所以如果要改某个包的版本，可以手动改，然后执行go mod tidy. go mod tidy 是更新依赖包命令，这里包含删除、新增、修改依赖包。go mod vendor 是讲依 赖包下载到vendor 文件夹。顺便提一下，go modules 是1.11后新加的特性之前 是GOPATH的方式" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xiet16.github.io/post/go_env_init/" />
+<meta property="article:published_time" content="2021-03-18T15:33:27+08:00" />
+<meta property="article:modified_time" content="2021-03-18T15:33:27+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://xiet16.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>xietie blog</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Go_env_init</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 18, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <p>1、登陆https://studygolang.com/dl下载安装包(这里忽略安装过程)</p>
+<p>2、环境配置(开启Module和代理，不然可能更新不下来依赖包)
+go env -w GO111MODULE=on
+go env -w GOPROXY=https://goproxy.io,direct</p>
+<p>3、新建项目
+(1)首先用vscode 打开一个空文件夹,添加main.go 文件 并编辑好代码
+(2)在终端中执行以下命令
+go mod init &ldquo;your_project_name&rdquo;
+go mod tidy
+go mod vendor</p>
+<p>go modules 我的理解是go 项目依赖包管理。执行 go mod init &ldquo;xxx&rdquo; 以后
+会生成一个go.mod的文件，这个文件展示的是项目所依赖的依赖包以及版本信息
+所以如果要改某个包的版本，可以手动改，然后执行go mod tidy. go mod tidy
+是更新依赖包命令，这里包含删除、新增、修改依赖包。go mod vendor 是讲依
+赖包下载到vendor 文件夹。顺便提一下，go modules 是1.11后新加的特性之前
+是GOPATH的方式</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
