@@ -6,7 +6,16 @@
     <description>Recent content on xietie blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Mar 2021 12:17:07 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 Mar 2021 22:25:58 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data_Struct_Queue</title>
+      <link>https://xiet16.github.io/post/data_struct_queue/</link>
+      <pubDate>Sat, 20 Mar 2021 22:25:58 +0800</pubDate>
+      
+      <guid>https://xiet16.github.io/post/data_struct_queue/</guid>
+      <description>队列: 特点： 先进先出 广度遍历 顺序队列的取出可能会很耗内存资源，因为每次都要往前移动 环形队列最多存储size-1个数据，空一格空格表示数据已满 假设 a b c d e f h k 假设用队列递归： 第一步：压入a, 取出a 第二步：压入bc,取出bc 第三步：压入def, 取出def 第四步：压入hk, 取出hk 假设用栈： 第一步：压入a, 取出a 第二步：压入bc,取出c 第三步：压入def,取出f 第四步：压入hk,取出k 第五步：取出hedb 所以栈是深度遍历 </description>
+    </item>
+    
     <item>
       <title>Aliyun_minikube_install</title>
       <link>https://xiet16.github.io/post/aliyun_minikube_install/</link>
