@@ -6,7 +6,16 @@
     <description>Recent content in Posts on xietie blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 21 Mar 2021 08:00:18 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Mar 2021 12:29:54 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data_Struct_InsertSort</title>
+      <link>https://xiet16.github.io/post/data_struct_insertsort/</link>
+      <pubDate>Sun, 21 Mar 2021 12:29:54 +0800</pubDate>
+      
+      <guid>https://xiet16.github.io/post/data_struct_insertsort/</guid>
+      <description>插入排序法 原理： 第一步：取出要对比的数据 第二步：找到要插入的位置 第三步：插入位置后的数据往前或后移 第四步：插入第一步取出的数据 实现：这里是往前插入，降序 {6,2,8,7,1,0,5} 第一步：从第二个数据开始，取出2，2&amp;lt;6 ,不做操作 第二步：取出8, 8&amp;gt;2, 赋值第三位（也就是8的位置）等于2，继续对比 8&amp;gt;6, 把6赋值第二位，然后数组已经到了临界，赋值第一位为8 第三步：取出7，循环第二步的做法 关键点： 移动 赋值 区别选择排序法 选择排序法是分别循环找第一个位置，第二个位置，第三个位置，第n个位置的值 插入排序是给值找位置 关键代码: for i:=1;i&amp;lt;length;i++ { j:=i-1 backup:=arr[i] //取出要找位置的值 for j&amp;gt;=0 &amp;amp;&amp;amp;arr[j]&amp;lt;backup { arr[j+1]=arr[j] //往后移动 j-- } arr[j+1]=backup //插入 fmt.Println(arr) } </description>
+    </item>
+    
     <item>
       <title>Data_Struct_SelectionSort</title>
       <link>https://xiet16.github.io/post/data_struct_selectionsort/</link>

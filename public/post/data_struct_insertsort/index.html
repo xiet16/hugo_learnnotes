@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Data_Struct_InsertSort // xietie blog</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.78.2" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://xiet16.github.io/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Data_Struct_InsertSort"/>
+<meta name="twitter:description" content="插入排序法 原理： 第一步：取出要对比的数据 第二步：找到要插入的位置 第三步：插入位置后的数据往前或后移 第四步：插入第一步取出的数据 实现：这里是往前插入，降序 {6,2,8,7,1,0,5} 第一步：从第二个数据开始，取出2，2&lt;6 ,不做操作 第二步：取出8, 8&gt;2, 赋值第三位（也就是8的位置）等于2，继续对比 8&gt;6, 把6赋值第二位，然后数组已经到了临界，赋值第一位为8 第三步：取出7，循环第二步的做法 关键点： 移动 赋值 区别选择排序法 选择排序法是分别循环找第一个位置，第二个位置，第三个位置，第n个位置的值 插入排序是给值找位置 关键代码: for i:=1;i&lt;length;i&#43;&#43; { j:=i-1 backup:=arr[i] //取出要找位置的值 for j&gt;=0 &amp;&amp;arr[j]&lt;backup { arr[j&#43;1]=arr[j] //往后移动 j-- } arr[j&#43;1]=backup //插入 fmt.Println(arr) } "/>
+
+    <meta property="og:title" content="Data_Struct_InsertSort" />
+<meta property="og:description" content="插入排序法 原理： 第一步：取出要对比的数据 第二步：找到要插入的位置 第三步：插入位置后的数据往前或后移 第四步：插入第一步取出的数据 实现：这里是往前插入，降序 {6,2,8,7,1,0,5} 第一步：从第二个数据开始，取出2，2&lt;6 ,不做操作 第二步：取出8, 8&gt;2, 赋值第三位（也就是8的位置）等于2，继续对比 8&gt;6, 把6赋值第二位，然后数组已经到了临界，赋值第一位为8 第三步：取出7，循环第二步的做法 关键点： 移动 赋值 区别选择排序法 选择排序法是分别循环找第一个位置，第二个位置，第三个位置，第n个位置的值 插入排序是给值找位置 关键代码: for i:=1;i&lt;length;i&#43;&#43; { j:=i-1 backup:=arr[i] //取出要找位置的值 for j&gt;=0 &amp;&amp;arr[j]&lt;backup { arr[j&#43;1]=arr[j] //往后移动 j-- } arr[j&#43;1]=backup //插入 fmt.Println(arr) } " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xiet16.github.io/post/data_struct_insertsort/" />
+<meta property="article:published_time" content="2021-03-21T12:29:54+08:00" />
+<meta property="article:modified_time" content="2021-03-21T12:29:54+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://xiet16.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>xietie blog</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Data_Struct_InsertSort</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 21, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <pre><code>插入排序法
+
+原理：
+第一步：取出要对比的数据
+第二步：找到要插入的位置
+第三步：插入位置后的数据往前或后移
+第四步：插入第一步取出的数据
+
+实现：这里是往前插入，降序
+{6,2,8,7,1,0,5}
+第一步：从第二个数据开始，取出2，2&lt;6 ,不做操作
+第二步：取出8, 8&gt;2,  赋值第三位（也就是8的位置）等于2，继续对比 8&gt;6, 把6赋值第二位，然后数组已经到了临界，赋值第一位为8
+第三步：取出7，循环第二步的做法
+
+关键点：
+移动
+赋值
+
+区别选择排序法
+选择排序法是分别循环找第一个位置，第二个位置，第三个位置，第n个位置的值
+插入排序是给值找位置
+
+关键代码:
+for i:=1;i&lt;length;i++ {
+       j:=i-1
+       backup:=arr[i]  //取出要找位置的值
+       for j&gt;=0 &amp;&amp;arr[j]&lt;backup {
+           arr[j+1]=arr[j]  //往后移动
+           j--
+       }
+      arr[j+1]=backup //插入
+      fmt.Println(arr)
+}
+
+</code></pre>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
