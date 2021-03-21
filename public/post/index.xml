@@ -6,7 +6,16 @@
     <description>Recent content in Posts on xietie blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 21 Mar 2021 14:27:44 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Mar 2021 17:15:34 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data_Struct_HeapSort</title>
+      <link>https://xiet16.github.io/post/data_struct_heapsort/</link>
+      <pubDate>Sun, 21 Mar 2021 17:15:34 +0800</pubDate>
+      
+      <guid>https://xiet16.github.io/post/data_struct_heapsort/</guid>
+      <description>堆排序 原理: 堆排序就是二叉树排序 假设5&amp;gt;3, 3&amp;gt;1 , 则 5&amp;gt;1 循环次数 假设把数组看成如下树形结构 N1(a[n]) N2(a[2*n+1]) N3(a[2*n +2]) N4(a[2*n+1]) N5(a[2*n +2]) N6(a[2*n+1]) N7(a[2*n +2]) 深度: length/2 +1 第一步:N2，N4,N5 做三节点排序，把最小的值赋给N2节点 第二步:N3,N6,N7 做三节点排序，把最小值赋给N3 第三步:同理，N1,N2,N3 做三节点排序，把最小值赋给N1，这时候，数组的第1个就是最小值 第四步：数组第1位和最后一位做调换，长度减1，当做新数组，进入下一次循环（重复第一第二第三步骤） 关键代码 deap :=length/2+1 //计算深度 for i:=deap-1;i&amp;gt;=0;i-- { maxValue := i leftChildren:=2*i +1 //左孩子节点 rightChildren :=2*i+2 //右孩子节点 //防止数组溢出 if leftChildren &amp;lt;= length-1 &amp;amp;&amp;amp; arr[leftChildren]&amp;lt;arr[maxValue]{ //arr[leftChildren],arr[maxValue]=arr[maxValue],arr[leftChildren] //这样写也行 maxValue = leftChildren } if rightChildren &amp;lt;=length-1 &amp;amp;&amp;amp; arr[rightChildren]&amp;lt;arr[maxValue] { //arr[rightChildren],arr[maxValue]=arr[maxValue],arr[rightChildren] maxValue =rightChildren // } if maxValue!</description>
+    </item>
+    
     <item>
       <title>Data_Struct_BubbleSort</title>
       <link>https://xiet16.github.io/post/data_struct_bubblesort/</link>
