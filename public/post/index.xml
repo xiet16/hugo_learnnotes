@@ -6,7 +6,16 @@
     <description>Recent content in Posts on xietie blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 21 Mar 2021 19:09:35 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Mar 2021 22:13:32 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data_Struct_MergeSort</title>
+      <link>https://xiet16.github.io/post/data_struct_mergesort/</link>
+      <pubDate>Sun, 21 Mar 2021 22:13:32 +0800</pubDate>
+      
+      <guid>https://xiet16.github.io/post/data_struct_mergesort/</guid>
+      <description>归并排序： 将数据切割成多段进行排序 然后再多段合并 好处: 内存不够时，可以节约内存 func MergeSort(arr []int) []int { length:=len(arr) if length&amp;lt;=1 { return arr } n:=length/2 frontArr :=MergeSort(arr[:n]) rearArr :=MergeSort(arr[n:]) return merge(frontArr,rearArr) } func merge(leftArr,rightArr []int)[]int { leftIndex:=0 rightIndex :=0 res:=[]int{} for leftIndex&amp;lt;len(leftArr)&amp;amp;&amp;amp;rightIndex&amp;lt;len(rightArr){ if leftArr[leftIndex] &amp;gt;rightArr[rightIndex] { res=append(res,leftArr[leftIndex]) leftIndex ++ }else if leftArr[leftIndex] &amp;lt; rightArr[rightIndex] { res = append(res,rightArr[rightIndex]) rightIndex++ }else { res =append(res,leftArr[leftIndex],rightArr[rightIndex]) leftIndex++ rightIndex++ } } for len(leftArr)&amp;gt;leftIndex { res =append(res,leftArr[leftIndex]) leftIndex++ } for len(rightArr)&amp;gt;rightIndex { res =append(res,rightArr[rightIndex]) rightIndex++ } return res } </description>
+    </item>
+    
     <item>
       <title>Data_Struct_OddEvenSort</title>
       <link>https://xiet16.github.io/post/data_struct_oddevensort/</link>
