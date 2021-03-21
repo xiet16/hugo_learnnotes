@@ -9,6 +9,7 @@ draft: true
 择排序法：
 每一次循环，都能取出一个最大值或者最小值
 最后一个值不需要，不需要对比
+效率是n*(n-1）/2
 
 假设有这个的一个数组
 6,2,8,7,1,0,5
@@ -23,6 +24,17 @@ draft: true
 “a”>“b”
 每个字母分别比较：
 strings.Compare("a","a")
+
+
+关键代码
+for i:=0;i<length-1;i++ {
+      for j:=i+1;j<length;j++ {
+            if arr[i]<arr[j] {
+                 arr[i],arr[j]=arr[j],arr[i]
+      }
+}
+
+总的比较次数N=(n-1）+(n-2）+...+1=n*(n-1）/2
 
 ```
 
