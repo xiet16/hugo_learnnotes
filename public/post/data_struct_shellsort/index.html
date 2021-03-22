@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Data_Struct_ShellSort // xietie blog</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.78.2" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://xiet16.github.io/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Data_Struct_ShellSort"/>
+<meta name="twitter:description" content=" 希尔排序： 特点: 是一种步长收缩算法，一般初次增量为序列的一半 本质上是一种分组 时间复杂度为O(n3/2) 可以用多线程 关键点： 如何定义步长 关键代码 gap :=length/2 for gap&gt;0 { for i:=0;i&lt;gap;i&#43;&#43; { ShellStep(arr,i,gap) } gap/=2 } //间隔为步长的插入算法 length:=len(arr) for i:=start&#43;gap;i&lt;length;i&#43;=gap { //间隔为gap 的插入排序 backup :=arr[i] j:=i-gap //数据循环往后移动 for j&gt;=0 &amp;&amp; backup&gt;arr[j]{ arr[j&#43;gap] = arr[j] j-=gap } arr[j&#43;gap]=backup //插入 fmt.Println(arr) } "/>
+
+    <meta property="og:title" content="Data_Struct_ShellSort" />
+<meta property="og:description" content=" 希尔排序： 特点: 是一种步长收缩算法，一般初次增量为序列的一半 本质上是一种分组 时间复杂度为O(n3/2) 可以用多线程 关键点： 如何定义步长 关键代码 gap :=length/2 for gap&gt;0 { for i:=0;i&lt;gap;i&#43;&#43; { ShellStep(arr,i,gap) } gap/=2 } //间隔为步长的插入算法 length:=len(arr) for i:=start&#43;gap;i&lt;length;i&#43;=gap { //间隔为gap 的插入排序 backup :=arr[i] j:=i-gap //数据循环往后移动 for j&gt;=0 &amp;&amp; backup&gt;arr[j]{ arr[j&#43;gap] = arr[j] j-=gap } arr[j&#43;gap]=backup //插入 fmt.Println(arr) } " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xiet16.github.io/post/data_struct_shellsort/" />
+<meta property="article:published_time" content="2021-03-22T08:45:08+08:00" />
+<meta property="article:modified_time" content="2021-03-22T08:45:08+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://xiet16.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>xietie blog</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Data_Struct_ShellSort</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 22, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <pre><code>
+希尔排序：
+
+特点:
+是一种步长收缩算法，一般初次增量为序列的一半
+本质上是一种分组
+时间复杂度为O(n3/2)
+可以用多线程
+
+关键点：
+如何定义步长
+
+
+关键代码
+gap :=length/2
+for gap&gt;0 {
+	for i:=0;i&lt;gap;i++ {
+		ShellStep(arr,i,gap)
+	}
+	gap/=2
+}
+
+
+//间隔为步长的插入算法
+length:=len(arr)
+for i:=start+gap;i&lt;length;i+=gap {
+	//间隔为gap 的插入排序
+	backup :=arr[i]
+	j:=i-gap
+	//数据循环往后移动
+	for j&gt;=0 &amp;&amp; backup&gt;arr[j]{
+		arr[j+gap] = arr[j]
+		j-=gap
+	}
+	arr[j+gap]=backup //插入
+	fmt.Println(arr)
+}
+
+
+
+</code></pre>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

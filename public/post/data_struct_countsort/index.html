@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Data_Struct_CountSort // xietie blog</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.78.2" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://xiet16.github.io/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Data_Struct_CountSort"/>
+<meta name="twitter:description" content="统计计数算法： 不基于元素比较的排序算法 举个简单的例子讲吧： 假设有一组数据： 4，3，6, 9，7 ，8 (1)取其中最大值9，这里通过一轮比较就可以得出 (2)建一个长度为9&#43;1=10的数组countarr，用数组的下标代表数据， 也就是arr[9] 中的[9]代表9 ,arr[9] 代表出现多少次 (3) 统计次数后的countarr: [0 0 0 1 1 0 1 1 1 1] (4) 其实这个时候已经排好序了，只要用下标和个数循环输出就行 (5) 有时候我们想知道，数组中的任意某个值是第几位，这时候进一步衍生下面的步骤 循环往后叠加，countarr[i]&#43;=countarr[i-1],这里需要理解，比如[0 0 0 1 1 变为 [0 0 0 1 2 这里的1变为2，代表的是[4] 排在第二位，以此类推完整的是这样 [0 0 0 1 2 2 3 4 5 6] 最后一位6很容易看出来，一共有6个数据，下标[9] 在第六位 关键代码： maxValue := GetMaxValue(arr) countArr:=make([]int,maxValue&#43;1) res:=make([]int,length) for i:=0;i&lt;length;i&#43;&#43; { countArr[arr[i]]&#43;&#43; //统计次数 } fmt.Println(&quot;统计次数:&quot;,countArr) for i:=1;i&lt;=maxValue;i&#43;&#43; { countArr[i]&#43;=countArr[i-1] //叠加 } fmt."/>
+
+    <meta property="og:title" content="Data_Struct_CountSort" />
+<meta property="og:description" content="统计计数算法： 不基于元素比较的排序算法 举个简单的例子讲吧： 假设有一组数据： 4，3，6, 9，7 ，8 (1)取其中最大值9，这里通过一轮比较就可以得出 (2)建一个长度为9&#43;1=10的数组countarr，用数组的下标代表数据， 也就是arr[9] 中的[9]代表9 ,arr[9] 代表出现多少次 (3) 统计次数后的countarr: [0 0 0 1 1 0 1 1 1 1] (4) 其实这个时候已经排好序了，只要用下标和个数循环输出就行 (5) 有时候我们想知道，数组中的任意某个值是第几位，这时候进一步衍生下面的步骤 循环往后叠加，countarr[i]&#43;=countarr[i-1],这里需要理解，比如[0 0 0 1 1 变为 [0 0 0 1 2 这里的1变为2，代表的是[4] 排在第二位，以此类推完整的是这样 [0 0 0 1 2 2 3 4 5 6] 最后一位6很容易看出来，一共有6个数据，下标[9] 在第六位 关键代码： maxValue := GetMaxValue(arr) countArr:=make([]int,maxValue&#43;1) res:=make([]int,length) for i:=0;i&lt;length;i&#43;&#43; { countArr[arr[i]]&#43;&#43; //统计次数 } fmt.Println(&quot;统计次数:&quot;,countArr) for i:=1;i&lt;=maxValue;i&#43;&#43; { countArr[i]&#43;=countArr[i-1] //叠加 } fmt." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xiet16.github.io/post/data_struct_countsort/" />
+<meta property="article:published_time" content="2021-03-22T12:05:28+08:00" />
+<meta property="article:modified_time" content="2021-03-22T12:05:28+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://xiet16.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>xietie blog</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Data_Struct_CountSort</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 22, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <pre><code>统计计数算法：
+不基于元素比较的排序算法
+
+举个简单的例子讲吧：
+假设有一组数据： 4，3，6,  9，7 ，8
+(1)取其中最大值9，这里通过一轮比较就可以得出
+(2)建一个长度为9+1=10的数组countarr，用数组的下标代表数据，
+    也就是arr[9] 中的[9]代表9 ,arr[9] 代表出现多少次
+(3) 统计次数后的countarr:   [0 0 0 1 1 0 1 1 1 1]
+(4) 其实这个时候已经排好序了，只要用下标和个数循环输出就行
+(5) 有时候我们想知道，数组中的任意某个值是第几位，这时候进一步衍生下面的步骤
+     循环往后叠加，countarr[i]+=countarr[i-1],这里需要理解，比如[0 0 0 1 1 变为
+     [0 0 0 1 2   这里的1变为2，代表的是[4] 排在第二位，以此类推完整的是这样
+     [0 0 0 1 2 2 3 4 5 6]   最后一位6很容易看出来，一共有6个数据，下标[9] 在第六位
+
+
+关键代码：
+
+maxValue := GetMaxValue(arr)
+	countArr:=make([]int,maxValue+1)
+	res:=make([]int,length)
+
+	for i:=0;i&lt;length;i++ {
+		countArr[arr[i]]++  //统计次数
+	}
+	fmt.Println(&quot;统计次数:&quot;,countArr)
+
+	for i:=1;i&lt;=maxValue;i++ {
+		countArr[i]+=countArr[i-1] //叠加
+	}
+	fmt.Println(&quot;次数叠加:&quot;,countArr )
+
+    //展开数据
+	for _,v:=range arr{
+		res[countArr[v]-1] =v
+		countArr[v]--
+	}
+
+	return res
+
+
+</code></pre>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
