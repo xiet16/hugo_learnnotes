@@ -6,7 +6,16 @@
     <description>Recent content on xietie blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 22 Mar 2021 19:42:00 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 Mar 2021 07:14:40 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data_Struct_CockSort</title>
+      <link>https://xiet16.github.io/post/data_struct_cocksort/</link>
+      <pubDate>Tue, 23 Mar 2021 07:14:40 +0800</pubDate>
+      
+      <guid>https://xiet16.github.io/post/data_struct_cocksort/</guid>
+      <description>鸡尾酒排序: 本质就是循环双边冒泡，每次冒泡都会有一个值沉底或值飘起 假设有一组数据: [350 180 166 100 97 87 35 32 16 15 6 5 4 4 3 2] 下边关键代码部分运行过程: 0 [4 6 32 5 166 4 350 180 3 2 87 15 97 35 16 100] 1 [6 32 5 166 4 350 180 100 4 3 2 87 15 97 35 16] 2 [32 6 166 5 350 180 100 97 4 4 3 2 87 15 35 16] 3 [32 166 6 350 180 100 97 87 5 4 4 3 2 35 15 16] 4 [166 32 350 180 100 97 87 35 6 5 4 4 3 2 16 15] 5 [166 350 180 100 97 87 35 32 16 6 5 4 4 3 2 15] 6 [350 180 166 100 97 87 35 32 16 15 6 5 4 4 3 2] 7 [350 180 166 100 97 87 35 32 16 15 6 5 4 4 3 2] 关键代码: for i:=0;i&amp;lt;length;i++ { left :=0; right :=length-1 for left&amp;lt;=right { if arr[left]&amp;lt;arr[left+1] { arr[left],arr[left+1]=arr[left+1],arr[left] } left++ if arr[right]&amp;gt;arr[right-1] { arr[right],arr[right-1]=arr[right-1],arr[right] } right-- } fmt.</description>
+    </item>
+    
     <item>
       <title>Go_channel</title>
       <link>https://xiet16.github.io/post/go_channel/</link>

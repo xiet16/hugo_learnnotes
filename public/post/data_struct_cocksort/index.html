@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Data_Struct_CockSort // xietie blog</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.78.2" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://xiet16.github.io/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Data_Struct_CockSort"/>
+<meta name="twitter:description" content="鸡尾酒排序: 本质就是循环双边冒泡，每次冒泡都会有一个值沉底或值飘起 假设有一组数据: [350 180 166 100 97 87 35 32 16 15 6 5 4 4 3 2] 下边关键代码部分运行过程: 0 [4 6 32 5 166 4 350 180 3 2 87 15 97 35 16 100] 1 [6 32 5 166 4 350 180 100 4 3 2 87 15 97 35 16] 2 [32 6 166 5 350 180 100 97 4 4 3 2 87 15 35 16] 3 [32 166 6 350 180 100 97 87 5 4 4 3 2 35 15 16] 4 [166 32 350 180 100 97 87 35 6 5 4 4 3 2 16 15] 5 [166 350 180 100 97 87 35 32 16 6 5 4 4 3 2 15] 6 [350 180 166 100 97 87 35 32 16 15 6 5 4 4 3 2] 7 [350 180 166 100 97 87 35 32 16 15 6 5 4 4 3 2] 关键代码: for i:=0;i&lt;length;i&#43;&#43; { left :=0; right :=length-1 for left&lt;=right { if arr[left]&lt;arr[left&#43;1] { arr[left],arr[left&#43;1]=arr[left&#43;1],arr[left] } left&#43;&#43; if arr[right]&gt;arr[right-1] { arr[right],arr[right-1]=arr[right-1],arr[right] } right-- } fmt."/>
+
+    <meta property="og:title" content="Data_Struct_CockSort" />
+<meta property="og:description" content="鸡尾酒排序: 本质就是循环双边冒泡，每次冒泡都会有一个值沉底或值飘起 假设有一组数据: [350 180 166 100 97 87 35 32 16 15 6 5 4 4 3 2] 下边关键代码部分运行过程: 0 [4 6 32 5 166 4 350 180 3 2 87 15 97 35 16 100] 1 [6 32 5 166 4 350 180 100 4 3 2 87 15 97 35 16] 2 [32 6 166 5 350 180 100 97 4 4 3 2 87 15 35 16] 3 [32 166 6 350 180 100 97 87 5 4 4 3 2 35 15 16] 4 [166 32 350 180 100 97 87 35 6 5 4 4 3 2 16 15] 5 [166 350 180 100 97 87 35 32 16 6 5 4 4 3 2 15] 6 [350 180 166 100 97 87 35 32 16 15 6 5 4 4 3 2] 7 [350 180 166 100 97 87 35 32 16 15 6 5 4 4 3 2] 关键代码: for i:=0;i&lt;length;i&#43;&#43; { left :=0; right :=length-1 for left&lt;=right { if arr[left]&lt;arr[left&#43;1] { arr[left],arr[left&#43;1]=arr[left&#43;1],arr[left] } left&#43;&#43; if arr[right]&gt;arr[right-1] { arr[right],arr[right-1]=arr[right-1],arr[right] } right-- } fmt." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xiet16.github.io/post/data_struct_cocksort/" />
+<meta property="article:published_time" content="2021-03-23T07:14:40+08:00" />
+<meta property="article:modified_time" content="2021-03-23T07:14:40+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://xiet16.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>xietie blog</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Data_Struct_CockSort</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 23, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <pre><code>
+鸡尾酒排序:
+本质就是循环双边冒泡，每次冒泡都会有一个值沉底或值飘起
+
+假设有一组数据:
+[350 180 166 100 97 87 35 32 16 15 6 5 4 4 3 2]
+
+下边关键代码部分运行过程:
+
+0 [4 6 32 5 166 4 350 180 3 2 87 15 97 35 16 100]
+1 [6 32 5 166 4 350 180 100 4 3 2 87 15 97 35 16]
+2 [32 6 166 5 350 180 100 97 4 4 3 2 87 15 35 16]
+3 [32 166 6 350 180 100 97 87 5 4 4 3 2 35 15 16]
+4 [166 32 350 180 100 97 87 35 6 5 4 4 3 2 16 15]
+5 [166 350 180 100 97 87 35 32 16 6 5 4 4 3 2 15]
+6 [350 180 166 100 97 87 35 32 16 15 6 5 4 4 3 2]
+7 [350 180 166 100 97 87 35 32 16 15 6 5 4 4 3 2]
+
+
+关键代码:
+for i:=0;i&lt;length;i++ {
+	left :=0;
+	right :=length-1
+	for left&lt;=right {
+		if arr[left]&lt;arr[left+1] {
+			arr[left],arr[left+1]=arr[left+1],arr[left]
+		}
+		left++
+
+		if arr[right]&gt;arr[right-1] {
+			arr[right],arr[right-1]=arr[right-1],arr[right]
+		}
+		right--
+}
+fmt.Println(i,arr)
+
+</code></pre>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
