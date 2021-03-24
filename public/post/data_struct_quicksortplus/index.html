@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Data_Struct_QuickSortPlus // xietie blog</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.78.2" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://xiet16.github.io/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Data_Struct_QuickSortPlus"/>
+<meta name="twitter:description" content="快速排序升级算法： 前面的快速排序有个弊端，就是频繁的开辟数组，造成内存不断的飙升，而且数据超过2000w时，排序的时间大大增加 原理: 取基数，小于基数的往左边插入，大于基数的往右边插入，等于的记录等于的起始位置 所以会有几个下标，[0-lt] 是小于 基数的下标，[lt-i]是等于基数的下标，[i-gt]是移动下标，当i==gt 时，此时[gt-length]是大于基数的下标 /* 3,2,8,6,9 1,5 取基数，这里每次都取arr[0] 小于的从第0位开始交换 大于的从最后一位开始放尽管扔到一变就好了 3,2,8,6,9,1,5 第一次循环，vdata=arr[0]=3 ,不动 3,2,5,6,9,1,8 第二次循环 3&lt;a[2]=8 gt-1 3,2,1,6,9,5,8 第三次循环 3&lt;a[2]=5 gt -1 3,2,1,6,9,5,8 第四次循环 3&gt;a[2]=1 这时候是不变的 3,2,1,9,6,5,8 第六次循环 3《a[3]=6 这时候是不变的 gt-1 3,2,1,9,6,5,8 第七次循环 3《a[3]=9 这时候是不变的 gt-1 ， 这个时候i==gt 1,2,3,9,6,5,8 第八次循环 */ 关键代码: func QuickInsertSort(arr []int,left int,right int) []int { //数组只剩3个时，用插入排序 if right-left &lt;3 { InsertQuick(arr,left,right) }else { //随机找一个数字 Swap(arr,left,rand.Int()%(right-left&#43;1)&#43;left) vdata :=arr[left] //基数 lt :=left //arr[left&#43;1,lt] &lt;vdata gt:=right&#43;1 //arr[gt."/>
+
+    <meta property="og:title" content="Data_Struct_QuickSortPlus" />
+<meta property="og:description" content="快速排序升级算法： 前面的快速排序有个弊端，就是频繁的开辟数组，造成内存不断的飙升，而且数据超过2000w时，排序的时间大大增加 原理: 取基数，小于基数的往左边插入，大于基数的往右边插入，等于的记录等于的起始位置 所以会有几个下标，[0-lt] 是小于 基数的下标，[lt-i]是等于基数的下标，[i-gt]是移动下标，当i==gt 时，此时[gt-length]是大于基数的下标 /* 3,2,8,6,9 1,5 取基数，这里每次都取arr[0] 小于的从第0位开始交换 大于的从最后一位开始放尽管扔到一变就好了 3,2,8,6,9,1,5 第一次循环，vdata=arr[0]=3 ,不动 3,2,5,6,9,1,8 第二次循环 3&lt;a[2]=8 gt-1 3,2,1,6,9,5,8 第三次循环 3&lt;a[2]=5 gt -1 3,2,1,6,9,5,8 第四次循环 3&gt;a[2]=1 这时候是不变的 3,2,1,9,6,5,8 第六次循环 3《a[3]=6 这时候是不变的 gt-1 3,2,1,9,6,5,8 第七次循环 3《a[3]=9 这时候是不变的 gt-1 ， 这个时候i==gt 1,2,3,9,6,5,8 第八次循环 */ 关键代码: func QuickInsertSort(arr []int,left int,right int) []int { //数组只剩3个时，用插入排序 if right-left &lt;3 { InsertQuick(arr,left,right) }else { //随机找一个数字 Swap(arr,left,rand.Int()%(right-left&#43;1)&#43;left) vdata :=arr[left] //基数 lt :=left //arr[left&#43;1,lt] &lt;vdata gt:=right&#43;1 //arr[gt." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xiet16.github.io/post/data_struct_quicksortplus/" />
+<meta property="article:published_time" content="2021-03-24T10:16:01+08:00" />
+<meta property="article:modified_time" content="2021-03-24T10:16:01+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://xiet16.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>xietie blog</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Data_Struct_QuickSortPlus</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 24, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <pre><code>快速排序升级算法：
+前面的快速排序有个弊端，就是频繁的开辟数组，造成内存不断的飙升，而且数据超过2000w时，排序的时间大大增加
+
+原理:
+取基数，小于基数的往左边插入，大于基数的往右边插入，等于的记录等于的起始位置
+所以会有几个下标，[0-lt] 是小于 基数的下标，[lt-i]是等于基数的下标，[i-gt]是移动下标，当i==gt 时，此时[gt-length]是大于基数的下标
+
+/*
+3,2,8,6,9 1,5
+取基数，这里每次都取arr[0]
+小于的从第0位开始交换
+大于的从最后一位开始放尽管扔到一变就好了
+3,2,8,6,9,1,5  第一次循环，vdata=arr[0]=3 ,不动
+3,2,5,6,9,1,8  第二次循环 3&lt;a[2]=8   gt-1
+3,2,1,6,9,5,8   第三次循环 3&lt;a[2]=5 gt -1
+3,2,1,6,9,5,8   第四次循环 3&gt;a[2]=1 这时候是不变的
+3,2,1,9,6,5,8   第六次循环 3《a[3]=6 这时候是不变的 gt-1
+3,2,1,9,6,5,8   第七次循环 3《a[3]=9 这时候是不变的 gt-1 ， 这个时候i==gt
+1,2,3,9,6,5,8   第八次循环
+*/
+
+关键代码:
+
+func QuickInsertSort(arr []int,left int,right int) []int {
+	//数组只剩3个时，用插入排序
+	if right-left &lt;3 {
+		InsertQuick(arr,left,right)
+	}else {
+		//随机找一个数字
+		Swap(arr,left,rand.Int()%(right-left+1)+left)
+		vdata :=arr[left] //基数
+		lt :=left //arr[left+1,lt] &lt;vdata
+		gt:=right+1  //arr[gt... r] &gt;vdata
+		i:=left+1    //arr[lt+1 ...i] ==vdata
+		for i&lt;gt {
+			if arr[i]&lt;vdata {
+				Swap(arr,i,lt+1) //这个是不是有点多此一举，
+				lt++
+				i++
+			}else if arr[i]&gt;vdata {
+               Swap(arr,i,gt-1)
+               gt--
+			}else {
+				i++
+			}
+		}
+        Swap(arr,left,lt) //交换头部位置
+        QuickInsertSort(arr,left,lt-1)
+		QuickInsertSort(arr,gt,right)
+	}
+	return arr
+}
+
+//升序插入算法
+func InsertQuick(arr []int,left,right int){
+	for i:=left;i&lt;=right;i++ {
+		temp := arr[i]
+		var j int
+		for j=i;j&gt;left&amp;&amp;arr[j-1]&gt;temp;j-- {
+			arr[j] = arr[j-1]  //循环
+ 		}
+		arr[j]=temp //插入
+	}
+}
+
+//数据交换
+func Swap(arr []int,i,j int)  {
+    arr[i],arr[j] =  arr[j],arr[i]
+}
+
+
+</code></pre>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
