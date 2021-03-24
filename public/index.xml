@@ -6,7 +6,25 @@
     <description>Recent content on xietie blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 24 Mar 2021 10:16:01 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Mar 2021 11:30:14 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data_Struct_MiddleSearch</title>
+      <link>https://xiet16.github.io/post/data_struct_middlesearch/</link>
+      <pubDate>Wed, 24 Mar 2021 11:30:14 +0800</pubDate>
+      
+      <guid>https://xiet16.github.io/post/data_struct_middlesearch/</guid>
+      <description>中值查找: 二分查找的优化，本质是值比例查找 /* 中值搜索: 根据值比例求中值 1,2,3,4,5,6,7,8,9,10 共10位数，取 8 在哪个位置 left:0 right:9 data/就得出值 (arr[right]-arr[left])/(right-left) 没份的间隔是多少 求data 大概在第几份 (data-arr[left])*(right-left)/(arr[right]-arr[left]) = n 中间值下标就是 left+ n */ func MiddleSearch(arr []int,data int) []int { length:=len(arr) if length &amp;lt;1 { return nil } left:=0 right:=length-1 res:=[]int{} if left&amp;lt;right { //mid:=(right+left)/2 //优化欠 allv := float64(arr[right]-arr[left]) leftv := float64(data-arr[left]) diff := float64(right-left) mid:= int(float64(left)+ leftv/allv*diff) if mid&amp;lt;0 || mid &amp;gt;length { return nil } if arr[mid] &amp;gt;data { right =mid-1 }else if arr[mid]&amp;lt;data { left = mid+1 }else { res =append(res,mid) for i:=mid+1;i&amp;lt;=right;i++ { if arr[i]==data { res=append(res,i) }else { break } } for i:=mid-1;i&amp;gt;=left;i-- { if arr[i]==data { res=append(res,i) }else { break } } } } return res } </description>
+    </item>
+    
+    <item>
+      <title>Data_Struct_BinarySearch</title>
+      <link>https://xiet16.github.io/post/data_struct_binarysearch/</link>
+      <pubDate>Wed, 24 Mar 2021 11:23:01 +0800</pubDate>
+      
+      <guid>https://xiet16.github.io/post/data_struct_binarysearch/</guid>
+      <description>二分查找： 从中间查找，前提是排了序的数据 关键代码： func BinarySearch(arr[] int ,data int) int { left:=0 right:=len(arr)-1 for left &amp;lt;right{ mid := (left+right)/2 if arr[mid]&amp;gt;data { left =mid+1 }else if arr[mid]&amp;lt;data{ right=mid-1 }else { return mid } } return -1 } </description>
+    </item>
+    
     <item>
       <title>Data_Struct_QuickSortPlus</title>
       <link>https://xiet16.github.io/post/data_struct_quicksortplus/</link>
