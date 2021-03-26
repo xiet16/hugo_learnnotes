@@ -6,7 +6,25 @@
     <description>Recent content in Posts on xietie blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 26 Mar 2021 07:53:35 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 26 Mar 2021 08:00:24 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Data_Struct_Storage_Stack</title>
+      <link>https://xiet16.github.io/post/data_struct_storage_stack/</link>
+      <pubDate>Fri, 26 Mar 2021 08:00:24 +0800</pubDate>
+      
+      <guid>https://xiet16.github.io/post/data_struct_storage_stack/</guid>
+      <description>/* 栈是一种数据结构,是只能在一端插入和删除数据的特殊线性表 先进后出 入栈和出栈都在栈顶进行 栈最主要的是保存了函数调用相关信息:其中最主要的是 1、函数的返回地址和参数 2、临时变量 */ type StackArray interface { Clear() //清空 Size() int //大小 Pop() interface{} //弹出 Push(data interface{}) //压入 IsFull()bool //是否满 IsEmpty()bool //是否为空 } type Stack struct { dataSource []interface{} capsize int //最大范围 currentsize int //当前大小 } func NewStack() *Stack { stack:= new(Stack) stack.dataSource =make([]interface{},0,10) stack.capsize =10 stack.currentsize =0 return stack } func (stack *Stack)Clear() { //go 自动回收内存 stack.dataSource =make([]interface{},0,10) stack.capsize =10 stack.currentsize =0 } func (stack *Stack)Size() int { return stack.</description>
+    </item>
+    
+    <item>
+      <title>Data_Struct_Storage_UnsafeQueue</title>
+      <link>https://xiet16.github.io/post/data_struct_storage_unsafequeue/</link>
+      <pubDate>Fri, 26 Mar 2021 07:58:13 +0800</pubDate>
+      
+      <guid>https://xiet16.github.io/post/data_struct_storage_unsafequeue/</guid>
+      <description>/* 非线程安全队列 */ type IQueue interface { Size() int //大小 Front() interface{} End() interface{} IsEmpty() bool EnQueue(data interface{}) //入队 DeQueue()interface{} Clear()//清空 } type Queue struct { dataStroe []interface{} // theSize int } func NewQueue()*Queue { queue :=new(Queue) queue.dataStroe =make([]interface{},0) queue.theSize=0 return queue } func (q *Queue)Size() int { return q.theSize } func (q *Queue)Front() interface{}{ if q.theSize ==0 { return nil } return q.dataStroe[0] } func (q *Queue)End() interface{}{ if q.</description>
+    </item>
+    
     <item>
       <title>Data_Struct_Storage_Compare</title>
       <link>https://xiet16.github.io/post/data_struct_storage_compare/</link>
