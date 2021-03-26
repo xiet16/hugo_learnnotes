@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Data_Struct_Sort_GoroutineShellSort // xietie blog</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.78.2" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://xiet16.github.io/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Data_Struct_Sort_GoroutineShellSort"/>
+<meta name="twitter:description" content="/* 希尔排序是插入排序的一种，是插入排序的优化 希尔排序时间复杂度是 O(n^(1.3-2))， 空间复杂度为常数阶 O(1)。 希尔排序没有时间复杂度为 O(n(logn)) 的快速排序算法快 ， 因此对中等大小规模表现良好， 但对规模非常大的数据排序不是最优选择，总之比一般 O(n^2 ) 复杂度的算法快得多。 这是插入排序: [6,2,8,7,1,0,5] 原数组 [6 2 8 7 1 0 5] 第一次循环从下标a1-&gt;a0 (前面的数据是循环后的结果) [8 6 2 7 1 0 5] 第三次循环从下标a2-a0 [8 7 6 2 1 0 5] [8 7 6 2 1 0 5] [8 7 6 2 1 0 5] [8 7 6 5 2 1 0] 这是插入排序 [7 2 8 6 1 0 5] [7 2 8 6 1 0 5] 3 步长-&gt;start: 0 插入排序后: [7 2 8 6 1 0 5] 备注: 前面两个是子插入过程，这一行是结果，实际排序 a[0],a[3],a[6] 3 个值，需要排2轮 [7 2 8 6 1 0 5] 3 步长-&gt;start: 1 插入排序后: [7 2 8 6 1 0 5] 备注: 前面1行是子插入过程，这一行是结果，实际排序 a[1],a[4] [7 2 8 6 1 0 5] 3 步长-&gt;start: 2 插入排序后: [7 2 8 6 1 0 5] 备注: 前面1行是子插入过程，这一行是结果，实际排序 a[2],a[5] [7 2 8 6 1 0 5] [8 7 2 6 1 0 5] [8 7 6 2 1 0 5] [8 7 6 2 1 0 5] [8 7 6 2 1 0 5] [8 7 6 5 2 1 0] 1 步长-&gt;start: 0 插入排序后: [8 7 6 5 2 1 0] 备注: 因为此时补偿为1，所以这个是一轮全插入 同一步长，是可以异步的 */ func GoroutineShellSort(arr []int) []int{ length:=len(arr) if length &lt;2 { return arr } wg:=sync."/>
+
+    <meta property="og:title" content="Data_Struct_Sort_GoroutineShellSort" />
+<meta property="og:description" content="/* 希尔排序是插入排序的一种，是插入排序的优化 希尔排序时间复杂度是 O(n^(1.3-2))， 空间复杂度为常数阶 O(1)。 希尔排序没有时间复杂度为 O(n(logn)) 的快速排序算法快 ， 因此对中等大小规模表现良好， 但对规模非常大的数据排序不是最优选择，总之比一般 O(n^2 ) 复杂度的算法快得多。 这是插入排序: [6,2,8,7,1,0,5] 原数组 [6 2 8 7 1 0 5] 第一次循环从下标a1-&gt;a0 (前面的数据是循环后的结果) [8 6 2 7 1 0 5] 第三次循环从下标a2-a0 [8 7 6 2 1 0 5] [8 7 6 2 1 0 5] [8 7 6 2 1 0 5] [8 7 6 5 2 1 0] 这是插入排序 [7 2 8 6 1 0 5] [7 2 8 6 1 0 5] 3 步长-&gt;start: 0 插入排序后: [7 2 8 6 1 0 5] 备注: 前面两个是子插入过程，这一行是结果，实际排序 a[0],a[3],a[6] 3 个值，需要排2轮 [7 2 8 6 1 0 5] 3 步长-&gt;start: 1 插入排序后: [7 2 8 6 1 0 5] 备注: 前面1行是子插入过程，这一行是结果，实际排序 a[1],a[4] [7 2 8 6 1 0 5] 3 步长-&gt;start: 2 插入排序后: [7 2 8 6 1 0 5] 备注: 前面1行是子插入过程，这一行是结果，实际排序 a[2],a[5] [7 2 8 6 1 0 5] [8 7 2 6 1 0 5] [8 7 6 2 1 0 5] [8 7 6 2 1 0 5] [8 7 6 2 1 0 5] [8 7 6 5 2 1 0] 1 步长-&gt;start: 0 插入排序后: [8 7 6 5 2 1 0] 备注: 因为此时补偿为1，所以这个是一轮全插入 同一步长，是可以异步的 */ func GoroutineShellSort(arr []int) []int{ length:=len(arr) if length &lt;2 { return arr } wg:=sync." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xiet16.github.io/post/data_struct_sort_goroutineshellsort/" />
+<meta property="article:published_time" content="2021-03-26T14:24:02+08:00" />
+<meta property="article:modified_time" content="2021-03-26T14:24:02+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://xiet16.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>xietie blog</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Data_Struct_Sort_GoroutineShellSort</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 26, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          2 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <pre><code>
+
+/*
+希尔排序是插入排序的一种，是插入排序的优化
+希尔排序时间复杂度是 O(n^(1.3-2))，
+空间复杂度为常数阶 O(1)。
+希尔排序没有时间复杂度为 O(n(logn)) 的快速排序算法快 ，
+因此对中等大小规模表现良好，
+但对规模非常大的数据排序不是最优选择，总之比一般 O(n^2 ) 复杂度的算法快得多。
+这是插入排序:
+[6,2,8,7,1,0,5] 原数组
+[6 2 8 7 1 0 5] 第一次循环从下标a1-&gt;a0 (前面的数据是循环后的结果)
+[8 6 2 7 1 0 5] 第三次循环从下标a2-a0
+[8 7 6 2 1 0 5]
+[8 7 6 2 1 0 5]
+[8 7 6 2 1 0 5]
+[8 7 6 5 2 1 0]
+
+这是插入排序
+[7 2 8 6 1 0 5]
+[7 2 8 6 1 0 5]
+3  步长-&gt;start: 0  插入排序后: [7 2 8 6 1 0 5]  备注: 前面两个是子插入过程，这一行是结果，实际排序 a[0],a[3],a[6] 3 个值，需要排2轮
+[7 2 8 6 1 0 5]
+3  步长-&gt;start: 1  插入排序后: [7 2 8 6 1 0 5]  备注: 前面1行是子插入过程，这一行是结果，实际排序 a[1],a[4]
+[7 2 8 6 1 0 5]
+3  步长-&gt;start: 2  插入排序后: [7 2 8 6 1 0 5]  备注: 前面1行是子插入过程，这一行是结果，实际排序 a[2],a[5]
+[7 2 8 6 1 0 5]
+[8 7 2 6 1 0 5]
+[8 7 6 2 1 0 5]
+[8 7 6 2 1 0 5]
+[8 7 6 2 1 0 5]
+[8 7 6 5 2 1 0]
+1  步长-&gt;start: 0  插入排序后: [8 7 6 5 2 1 0]  备注: 因为此时补偿为1，所以这个是一轮全插入
+
+同一步长，是可以异步的
+*/
+
+
+func GoroutineShellSort(arr []int) []int{
+	length:=len(arr)
+	if length &lt;2 {
+		return arr
+	}
+	wg:=sync.WaitGroup{} //等待线程返回
+	goroutinenum:=runtime.NumCPU() //系统cpu 倍数
+
+	//压缩步长
+	for gap:=length/2;gap&gt;0;gap/=2 {
+		wg.Add(goroutinenum) //需要等待的协程数
+		ch := make(chan int,10000)  //通道
+
+		//往通道传递参数
+		go func() {
+			for k:=0;k&lt;gap;k++ {
+				ch &lt;- k
+			}
+
+			close(ch) //关闭管道
+		}()
+
+		//开启协程，不断的接收通道信息
+		//原理就是，用一个协程给channel 传递参数， 用n个协程去执行任务
+		for k:=0;k&lt;goroutinenum;k++ {
+			go func() {
+				for v:=range ch{
+					ArraySorts.ShellStep(arr,v,gap)
+				}
+
+				wg.Done() //完成
+			}()
+		}
+		wg.Wait()
+
+		fmt.Println(&quot;current gap:&quot;,gap)
+	}
+
+    return arr
+}
+
+
+
+</code></pre>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
