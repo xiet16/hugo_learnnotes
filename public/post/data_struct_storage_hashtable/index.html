@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Data_Struct_Storage_HashTable // xietie blog</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.78.2" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://xiet16.github.io/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Data_Struct_Storage_HashTable"/>
+<meta name="twitter:description" content="/* 哈希函数 哈希的原理是:任何一个字符串都能转换为一个整形，同一字符串对应的哈希值一定相同，不同字符串对应的哈希值一定不同，同一哈希值对应的字符串不一定相同 哈希表: 不适合频繁插入删除 可以实现快速查找 */ const ( Deleted = iota //数据已经被删除 MintableSize =100 //哈希表大小 legimate =iota //已经存在的合法数据 Empty = iota //数据为空 ) //自定义哈希 func MySha(str interface{},tableSize int) int { var hashVal int= 0 var chars []byte if strings,ok:=str.(string);ok { chars = []byte(strings) } for _,v := range chars{ hashVal = (hashVal&lt;&lt;17|123&amp;234)&#43;int(v) } return hashVal%MintableSize } //sha256 func MySha256(str interface{},tableSize int) int { shaobj:=sha256.New() shaobj.Write([]byte(str.(string))) //哈希 mybytes :=shaobj.Sum(nil) var hashVal int= 0 for _,v := range mybytes{ hashVal = (hashVal&lt;&lt;17|123&amp;234)&#43;int(v) } return hashVal%MintableSize } //定义哈希函数指针 type HashFunc func(data interface{},tableSize int) int //函数指针 //哈希表--&gt; 哈希结构体集合--&gt;哈希结构体 type HashEntry struct { data interface{} //数据 kind int //类型 } type HashTable struct { tableSize int //哈希表大小 theCells [] *HashEntry //数组，每一个元素就是指针，指向哈希结构 hashFunc HashFunc //调用哈希函数 } type HashTableGo interface { Find(data interface{}) int Insert (data interface{}) Empty() GetValue(index int) } func NewHashTable(size int,hash HashFunc) (*HashTable,error) { if size &lt;MintableSize { return nil,errors."/>
+
+    <meta property="og:title" content="Data_Struct_Storage_HashTable" />
+<meta property="og:description" content="/* 哈希函数 哈希的原理是:任何一个字符串都能转换为一个整形，同一字符串对应的哈希值一定相同，不同字符串对应的哈希值一定不同，同一哈希值对应的字符串不一定相同 哈希表: 不适合频繁插入删除 可以实现快速查找 */ const ( Deleted = iota //数据已经被删除 MintableSize =100 //哈希表大小 legimate =iota //已经存在的合法数据 Empty = iota //数据为空 ) //自定义哈希 func MySha(str interface{},tableSize int) int { var hashVal int= 0 var chars []byte if strings,ok:=str.(string);ok { chars = []byte(strings) } for _,v := range chars{ hashVal = (hashVal&lt;&lt;17|123&amp;234)&#43;int(v) } return hashVal%MintableSize } //sha256 func MySha256(str interface{},tableSize int) int { shaobj:=sha256.New() shaobj.Write([]byte(str.(string))) //哈希 mybytes :=shaobj.Sum(nil) var hashVal int= 0 for _,v := range mybytes{ hashVal = (hashVal&lt;&lt;17|123&amp;234)&#43;int(v) } return hashVal%MintableSize } //定义哈希函数指针 type HashFunc func(data interface{},tableSize int) int //函数指针 //哈希表--&gt; 哈希结构体集合--&gt;哈希结构体 type HashEntry struct { data interface{} //数据 kind int //类型 } type HashTable struct { tableSize int //哈希表大小 theCells [] *HashEntry //数组，每一个元素就是指针，指向哈希结构 hashFunc HashFunc //调用哈希函数 } type HashTableGo interface { Find(data interface{}) int Insert (data interface{}) Empty() GetValue(index int) } func NewHashTable(size int,hash HashFunc) (*HashTable,error) { if size &lt;MintableSize { return nil,errors." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xiet16.github.io/post/data_struct_storage_hashtable/" />
+<meta property="article:published_time" content="2021-03-26T09:30:06+08:00" />
+<meta property="article:modified_time" content="2021-03-26T09:30:06+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://xiet16.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>xietie blog</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Data_Struct_Storage_HashTable</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 26, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          2 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <pre><code>
+
+/*
+哈希函数
+哈希的原理是:任何一个字符串都能转换为一个整形，同一字符串对应的哈希值一定相同，不同字符串对应的哈希值一定不同，同一哈希值对应的字符串不一定相同
+
+哈希表:
+不适合频繁插入删除
+可以实现快速查找
+*/
+
+const (
+	Deleted = iota  //数据已经被删除
+	MintableSize =100 //哈希表大小
+	legimate =iota //已经存在的合法数据
+	Empty = iota  //数据为空
+)
+
+//自定义哈希
+func MySha(str interface{},tableSize int) int {
+	var hashVal int= 0
+	var chars []byte
+	if strings,ok:=str.(string);ok {
+		chars = []byte(strings)
+	}
+
+	for _,v := range chars{
+		hashVal = (hashVal&lt;&lt;17|123&amp;234)+int(v)
+	}
+
+	return hashVal%MintableSize
+}
+
+//sha256
+func MySha256(str interface{},tableSize int) int {
+   shaobj:=sha256.New()
+   shaobj.Write([]byte(str.(string))) //哈希
+   mybytes :=shaobj.Sum(nil)
+
+	var hashVal int= 0
+	for _,v := range mybytes{
+		hashVal = (hashVal&lt;&lt;17|123&amp;234)+int(v)
+	}
+
+	return hashVal%MintableSize
+}
+
+//定义哈希函数指针
+type HashFunc func(data interface{},tableSize int) int //函数指针
+
+
+//哈希表--&gt; 哈希结构体集合--&gt;哈希结构体
+type HashEntry struct {
+	data interface{} //数据
+	kind int //类型
+}
+
+type HashTable struct {
+	tableSize int //哈希表大小
+	theCells [] *HashEntry  //数组，每一个元素就是指针，指向哈希结构
+	hashFunc HashFunc    //调用哈希函数
+}
+
+type HashTableGo interface {
+	Find(data interface{}) int
+    Insert (data interface{})
+	Empty()
+	GetValue(index int)
+}
+
+func NewHashTable(size int,hash HashFunc) (*HashTable,error) {
+	if size &lt;MintableSize {
+		return nil,errors.New(&quot;哈希表太小&quot;)
+	}
+
+	if hash == nil {
+		return nil,errors.New(&quot;没有哈希函数&quot;)
+	}
+
+	//设置哈希表并且返回
+	hashTable := &amp;HashTable{ size, make([]*HashEntry,size), hash}
+	for i:=0;i&lt;hashTable.tableSize;i++ {
+		hashTable.theCells[i] =new(HashEntry)
+		hashTable.theCells[i].data =nil
+		hashTable.theCells[i].kind = Empty
+	}
+
+	return hashTable,nil
+}
+
+func (h *HashTable)Find(data interface{}) int{
+	var colLId =0
+	curpos := h.hashFunc(data,h.tableSize)//计算哈希值
+	if h.theCells[curpos].kind!=Empty &amp;&amp; h.theCells[curpos].data!=data {
+		colLId +=1
+		curpos :=2*curpos-1 //平方探测
+
+		//如果越界
+		if curpos&gt;h.tableSize {
+           curpos -=h.tableSize
+		}
+	}
+	return curpos
+}
+func (h *HashTable) Insert (data interface{}){
+	pos := h.Find(data) //查找位置
+	entry := h.theCells[pos]
+	//是否已经存在数据
+	if entry.kind != legimate{
+		entry.kind = legimate
+		entry.data = data //插入数据
+	}
+}
+
+func (h *HashTable) Empty(){
+	for i:=0;i&lt;h.tableSize;i++ {
+		if h.theCells[i]==nil {
+			continue
+		}
+		h.theCells[i].kind = Deleted //标志已删除
+	}
+}
+
+
+func (h *HashTable) GetValue(index int)interface{}{
+	if index&gt;h.tableSize {
+		return nil
+	}
+	entry := h.theCells[index]
+	if entry.kind == legimate {
+		return entry.data
+	}else {
+		return nil
+	}
+}
+
+
+
+
+</code></pre>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
