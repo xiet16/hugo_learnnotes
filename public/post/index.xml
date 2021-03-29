@@ -6,7 +6,16 @@
     <description>Recent content in Posts on xietie blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 26 Mar 2021 14:24:02 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 29 Mar 2021 16:09:32 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nosql_Redis</title>
+      <link>https://xiet16.github.io/post/nosql_redis/</link>
+      <pubDate>Mon, 29 Mar 2021 16:09:32 +0800</pubDate>
+      
+      <guid>https://xiet16.github.io/post/nosql_redis/</guid>
+      <description>1、redis 常用数据类型 string list hash set zset 2、redis 有效期 (1)redis 有效期的处理实际是对键的处理，Expires 保存了所有键的过期时间 (2)以下是四种过期策略（无过期值为-1） EXPIRE 将key 的生存时间为ttl 秒 PEXPIRE 将key 的生存时间设为ttl 毫秒 EXPIREAT 以时间戳的方式设置生存时间为timestamp秒 PEXPIREAT 毫秒的时间搓 (3)例子 set key1 &#39;value1&#39; exipre key1 20 expireat key1 1545470885 persist key1 //取消有效期，也就是设置其有效期为-1 (4) 清除失效数据机制 定时删除：在设置键的过期时间的时候创建一个定时器，当过期时间到的时候立马执行删除操作。不过这种处理方式是即时的，不管这个时间内有多少过期键，不管服务器现在的运行状况，都会立马执行 惰性删除：惰性删除策略不会在键过期的时候立马删除，而是当外部指令获取这个键的时候才会主动删除。处理过程为：接收get执行、判断是否过期（这里按过期判断）、执行删除操作、返回nil（空） 定期删除：定期删除是设置一个时间间隔，每个时间段都会检测是否有过期键，如果有执行删除操作 (5) redis 内存满了 设置内存大小 config set maxmemory 100MB /config get maxmemery 内存淘汰机制： noeviction(默认)：不再提供写请求，返回错误 allkeys-lru : 在所有的key 中使用lru 算法对数据进行淘汰 volatile-lru: 在设置了&amp;quot;过期时间&amp;quot;的key 中使用lru 算法进行淘汰 allkeys-random : 在所有key 中随机淘汰 volatitle-random: 在设置了“过期时间”的key中设置了淘汰 volatitle-ttl: 看着就知道了，最早过期的最新淘汰 3、redis 持久化 [ridis 持久化](http://example.</description>
+    </item>
+    
     <item>
       <title>Data_Struct_Sort_GoroutineShellSort</title>
       <link>https://xiet16.github.io/post/data_struct_sort_goroutineshellsort/</link>
