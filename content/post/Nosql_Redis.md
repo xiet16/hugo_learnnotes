@@ -46,7 +46,7 @@ volatitle-random: 在设置了“过期时间”的key中设置了淘汰
 volatitle-ttl: 看着就知道了，最早过期的最新淘汰
 
 3、redis 持久化
-[ridis 持久化](http://example.net/)
+<https://baijiahao.baidu.com/s?id=1654694618189745916&wfr=spider&for=pc>
 
 4、redis主从复制
 
@@ -63,7 +63,7 @@ Redis增量同步主要是指Slave完成初始化开始正常工作时，Master�
 通常情况下，Master没执行一个写命令就会想Slave发送相同的写命令，然后Slave接受并执行
 
 简书上的说明，我觉得可以
-[redis 主从复制](https://www.jianshu.com/p/40212051ccc9)
+<https://www.jianshu.com/p/40212051ccc9>
 
 
 ```
