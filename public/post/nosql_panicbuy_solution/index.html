@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Nosql_PanicBuy_Solution // xietie blog</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.78.2" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://xiet16.github.io/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Nosql_PanicBuy_Solution"/>
+<meta name="twitter:description" content="秒杀系统分析 限流： 消峰：由于有瞬间有大量用户涌入 异步处理： 内存缓存：数据库读写有瓶颈，因为它的读写是基于磁盘IO 单机版的redis qps 大概在8w 左右 集群版访问原理：假设有三个Node1、Node2、Node3 ， 第一次访问A商品数据时，通过hash ，找到A商品所在的Node ,然后返回 所以，集群只是分担了总的Qps , 而不是提高了Qps,单个商品的Qps 并没有提升 在12核cup 的条件下，单个接口能承受20-30w 通过go 的并发机制&#43;redis 可以实现商品高并发下的秒杀。但是无法解决数据库订单量的生成以及商品数的修改。这个时候就要用到消息队里 流量控制： 消息队列：避免瞬间的流量给数据库带来巨大的压力， 使用模式autoack :true &#43;qos 手动应答的方式,每次只消费一个订单 Qos{ prefetchcount :1, 每次只消费一个 prefetchSize :0 , 服务器传递的最大容量，8个字节 global :false, //只对当前消费队列 ，如果true 对所有channel 可用 } redis 分布式锁：setnx &#43; 续命锁（redisson 用的是hset &#43;续命锁） redis 主从锁失效问题：只有半数以上的锁加成功以后，才返回加锁成功 如何提高分布式锁性能：分段锁 缓存数据库双写不一致：缓存双删（问题没法解决）、分布式锁 "/>
+
+    <meta property="og:title" content="Nosql_PanicBuy_Solution" />
+<meta property="og:description" content="秒杀系统分析 限流： 消峰：由于有瞬间有大量用户涌入 异步处理： 内存缓存：数据库读写有瓶颈，因为它的读写是基于磁盘IO 单机版的redis qps 大概在8w 左右 集群版访问原理：假设有三个Node1、Node2、Node3 ， 第一次访问A商品数据时，通过hash ，找到A商品所在的Node ,然后返回 所以，集群只是分担了总的Qps , 而不是提高了Qps,单个商品的Qps 并没有提升 在12核cup 的条件下，单个接口能承受20-30w 通过go 的并发机制&#43;redis 可以实现商品高并发下的秒杀。但是无法解决数据库订单量的生成以及商品数的修改。这个时候就要用到消息队里 流量控制： 消息队列：避免瞬间的流量给数据库带来巨大的压力， 使用模式autoack :true &#43;qos 手动应答的方式,每次只消费一个订单 Qos{ prefetchcount :1, 每次只消费一个 prefetchSize :0 , 服务器传递的最大容量，8个字节 global :false, //只对当前消费队列 ，如果true 对所有channel 可用 } redis 分布式锁：setnx &#43; 续命锁（redisson 用的是hset &#43;续命锁） redis 主从锁失效问题：只有半数以上的锁加成功以后，才返回加锁成功 如何提高分布式锁性能：分段锁 缓存数据库双写不一致：缓存双删（问题没法解决）、分布式锁 " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xiet16.github.io/post/nosql_panicbuy_solution/" />
+<meta property="article:published_time" content="2021-03-30T08:58:48+08:00" />
+<meta property="article:modified_time" content="2021-03-30T08:58:48+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://xiet16.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>xietie blog</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Nosql_PanicBuy_Solution</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Mar 30, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <pre><code>秒杀系统分析
+限流：
+消峰：由于有瞬间有大量用户涌入
+异步处理：
+内存缓存：数据库读写有瓶颈，因为它的读写是基于磁盘IO
+
+单机版的redis qps 大概在8w 左右
+集群版访问原理：假设有三个Node1、Node2、Node3 ，
+第一次访问A商品数据时，通过hash ，找到A商品所在的Node ,然后返回
+所以，集群只是分担了总的Qps , 而不是提高了Qps,单个商品的Qps 并没有提升
+
+在12核cup 的条件下，单个接口能承受20-30w 
+
+通过go 的并发机制+redis  可以实现商品高并发下的秒杀。但是无法解决数据库订单量的生成以及商品数的修改。这个时候就要用到消息队里
+
+流量控制：
+消息队列：避免瞬间的流量给数据库带来巨大的压力，
+
+使用模式autoack :true +qos   手动应答的方式,每次只消费一个订单
+Qos{
+ prefetchcount :1,  每次只消费一个
+ prefetchSize :0 ,    服务器传递的最大容量，8个字节
+ global :false,   //只对当前消费队列    ，如果true  对所有channel 可用
+}
+
+redis 分布式锁：setnx + 续命锁（redisson 用的是hset +续命锁）
+redis 主从锁失效问题：只有半数以上的锁加成功以后，才返回加锁成功
+如何提高分布式锁性能：分段锁
+缓存数据库双写不一致：缓存双删（问题没法解决）、分布式锁
+
+</code></pre>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
