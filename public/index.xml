@@ -6,17 +6,23 @@
     <description>Recent content on xietie blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Apr 2021 12:21:09 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 05 Apr 2021 10:39:49 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go_gin_router</title>
+      <link>https://xiet16.github.io/post/go_gin_router/</link>
+      <pubDate>Mon, 05 Apr 2021 10:39:49 +0800</pubDate>
+      
+      <guid>https://xiet16.github.io/post/go_gin_router/</guid>
+      <description>1 设置环境(debug release) 2 初始化内核gin.Engine， 3 注册路由 gin.Engine 是一个结构体，结构体中包含RouterGroup，RouterGroup 也是一个结构体，定义如下 type RouterGroup struct { Handlers HandlersChain basePath string engine *Engine root bool } gin.Engine.Use() 方法: 主要是拼接中间件,rebuild404Handlers 和rebuild405Handlers调用的居然是同一个方法，为什么 func (engine *Engine) Use(middleware ...HandlerFunc) IRoutes { engine.RouterGroup.Use(middleware...) engine.rebuild404Handlers() engine.rebuild405Handlers() return engine } gin.Engine.RouterGroup.Use() 方法 func (group *RouterGroup) Use(middleware ...HandlerFunc) IRoutes { group.Handlers = append(group.Handlers, middleware...) return group.returnObj() } gin.Engine 注入action 实际上还是注入RouterGroup func (group *RouterGroup) GET(relativePath string, handlers ...HandlerFunc) IRoutes { return group.</description>
+    </item>
+    
     <item>
       <title>Mysql_Optimistic_Pessimistic</title>
       <link>https://xiet16.github.io/post/mysql_optimistic_pessimistic/</link>
       <pubDate>Sat, 03 Apr 2021 12:21:09 +0800</pubDate>
       
       <guid>https://xiet16.github.io/post/mysql_optimistic_pessimistic/</guid>
-      <description>乐观锁： 通过版本实现
-悲观锁： 通过数据库机制实现
-mysql inodb
-for update 使用规则： 要在事务里面使用，才能锁住所查询的资源，可以是多行 锁住的是行数据，不只是某个字段，所以如果另一个事务去修改其他字段，也是不行的 锁的是锁机制，就是说不允许再加锁，并没有锁住查询（正常的查询还是可以查到数据的）</description>
+      <description> 乐观锁： 通过版本实现 悲观锁： 通过数据库机制实现 mysql inodb for update 使用规则： 要在事务里面使用，才能锁住所查询的资源，可以是多行 锁住的是行数据，不只是某个字段，所以如果另一个事务去修改其他字段，也是不行的 锁的是锁机制，就是说不允许再加锁，并没有锁住查询（正常的查询还是可以查到数据的） </description>
     </item>
     
     <item>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Go_gin_router // xietie blog</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.78.2" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://xiet16.github.io/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Go_gin_router"/>
+<meta name="twitter:description" content="1 设置环境(debug release) 2 初始化内核gin.Engine， 3 注册路由 gin.Engine 是一个结构体，结构体中包含RouterGroup，RouterGroup 也是一个结构体，定义如下 type RouterGroup struct { Handlers HandlersChain basePath string engine *Engine root bool } gin.Engine.Use() 方法: 主要是拼接中间件,rebuild404Handlers 和rebuild405Handlers调用的居然是同一个方法，为什么 func (engine *Engine) Use(middleware ...HandlerFunc) IRoutes { engine.RouterGroup.Use(middleware...) engine.rebuild404Handlers() engine.rebuild405Handlers() return engine } gin.Engine.RouterGroup.Use() 方法 func (group *RouterGroup) Use(middleware ...HandlerFunc) IRoutes { group.Handlers = append(group.Handlers, middleware...) return group.returnObj() } gin.Engine 注入action 实际上还是注入RouterGroup func (group *RouterGroup) GET(relativePath string, handlers ...HandlerFunc) IRoutes { return group."/>
+
+    <meta property="og:title" content="Go_gin_router" />
+<meta property="og:description" content="1 设置环境(debug release) 2 初始化内核gin.Engine， 3 注册路由 gin.Engine 是一个结构体，结构体中包含RouterGroup，RouterGroup 也是一个结构体，定义如下 type RouterGroup struct { Handlers HandlersChain basePath string engine *Engine root bool } gin.Engine.Use() 方法: 主要是拼接中间件,rebuild404Handlers 和rebuild405Handlers调用的居然是同一个方法，为什么 func (engine *Engine) Use(middleware ...HandlerFunc) IRoutes { engine.RouterGroup.Use(middleware...) engine.rebuild404Handlers() engine.rebuild405Handlers() return engine } gin.Engine.RouterGroup.Use() 方法 func (group *RouterGroup) Use(middleware ...HandlerFunc) IRoutes { group.Handlers = append(group.Handlers, middleware...) return group.returnObj() } gin.Engine 注入action 实际上还是注入RouterGroup func (group *RouterGroup) GET(relativePath string, handlers ...HandlerFunc) IRoutes { return group." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xiet16.github.io/post/go_gin_router/" />
+<meta property="article:published_time" content="2021-04-05T10:39:49+08:00" />
+<meta property="article:modified_time" content="2021-04-05T10:39:49+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://xiet16.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>xietie blog</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Go_gin_router</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Apr 5, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <pre><code>
+1 设置环境(debug release)
+2 初始化内核gin.Engine，
+3 注册路由 gin.Engine 是一个结构体，结构体中包含RouterGroup，RouterGroup 也是一个结构体，定义如下
+        type RouterGroup struct {
+            Handlers HandlersChain
+            basePath string
+            engine   *Engine
+            root     bool
+        }
+  gin.Engine.Use() 方法: 主要是拼接中间件,rebuild404Handlers 和rebuild405Handlers调用的居然是同一个方法，为什么 
+    func (engine *Engine) Use(middleware ...HandlerFunc) IRoutes {
+        engine.RouterGroup.Use(middleware...)
+        engine.rebuild404Handlers()
+        engine.rebuild405Handlers()
+        return engine
+    }
+
+  gin.Engine.RouterGroup.Use() 方法
+    func (group *RouterGroup) Use(middleware ...HandlerFunc) IRoutes {
+        group.Handlers = append(group.Handlers, middleware...)
+        return group.returnObj()
+    }
+    
+    
+  gin.Engine 注入action 实际上还是注入RouterGroup
+    func (group *RouterGroup) GET(relativePath string, handlers ...HandlerFunc) IRoutes {
+        return group.handle(http.MethodGet, relativePath, handlers)
+    }
+
+    func (group *RouterGroup) handle(httpMethod, relativePath string, handlers HandlersChain) IRoutes {
+        absolutePath := group.calculateAbsolutePath(relativePath)
+        handlers = group.combineHandlers(handlers)
+        group.engine.addRoute(httpMethod, absolutePath, handlers)
+        return group.returnObj()
+    }
+
+    func (group *RouterGroup) Group(relativePath string, handlers ...HandlerFunc) *RouterGroup {
+        return &amp;RouterGroup{
+            Handlers: group.combineHandlers(handlers),
+            basePath: group.calculateAbsolutePath(relativePath),
+            engine:   group.engine,
+        }
+    }
+  gin.Engine 注入action 例子:两种写法
+    router.GET(&quot;/swagger/*any&quot;, ginSwagger.WrapHandler(swaggerFiles.Handler))
+  
+    store := sessions.NewCookieStore([]byte(&quot;secret&quot;))
+	apiNormalGroup := router.Group(&quot;/api&quot;)
+	apiNormalGroup.Use(sessions.Sessions(&quot;mysession&quot;, store),
+		middleware.RecoveryMiddleware(),
+		middleware.RequestLog(),
+		middleware.TranslationMiddleware())
+	{
+		controller.ApiRegister(apiNormalGroup)
+	}
+
+
+</code></pre>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

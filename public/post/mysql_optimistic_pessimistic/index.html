@@ -13,16 +13,10 @@
     
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mysql_Optimistic_Pessimistic"/>
-<meta name="twitter:description" content="乐观锁： 通过版本实现
-悲观锁： 通过数据库机制实现
-mysql inodb
-for update 使用规则： 要在事务里面使用，才能锁住所查询的资源，可以是多行 锁住的是行数据，不只是某个字段，所以如果另一个事务去修改其他字段，也是不行的 锁的是锁机制，就是说不允许再加锁，并没有锁住查询（正常的查询还是可以查到数据的）"/>
+<meta name="twitter:description" content=" 乐观锁： 通过版本实现 悲观锁： 通过数据库机制实现 mysql inodb for update 使用规则： 要在事务里面使用，才能锁住所查询的资源，可以是多行 锁住的是行数据，不只是某个字段，所以如果另一个事务去修改其他字段，也是不行的 锁的是锁机制，就是说不允许再加锁，并没有锁住查询（正常的查询还是可以查到数据的） "/>
 
     <meta property="og:title" content="Mysql_Optimistic_Pessimistic" />
-<meta property="og:description" content="乐观锁： 通过版本实现
-悲观锁： 通过数据库机制实现
-mysql inodb
-for update 使用规则： 要在事务里面使用，才能锁住所查询的资源，可以是多行 锁住的是行数据，不只是某个字段，所以如果另一个事务去修改其他字段，也是不行的 锁的是锁机制，就是说不允许再加锁，并没有锁住查询（正常的查询还是可以查到数据的）" />
+<meta property="og:description" content=" 乐观锁： 通过版本实现 悲观锁： 通过数据库机制实现 mysql inodb for update 使用规则： 要在事务里面使用，才能锁住所查询的资源，可以是多行 锁住的是行数据，不只是某个字段，所以如果另一个事务去修改其他字段，也是不行的 锁的是锁机制，就是说不允许再加锁，并没有锁住查询（正常的查询还是可以查到数据的） " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://xiet16.github.io/post/mysql_optimistic_pessimistic/" />
 <meta property="article:published_time" content="2021-04-03T12:21:09+08:00" />
@@ -59,15 +53,20 @@ for update 使用规则： 要在事务里面使用，才能锁住所查询的�
       </div>
     </header>
     <div class="post-content">
-      <p>乐观锁：
-通过版本实现</p>
-<p>悲观锁： 通过数据库机制实现</p>
-<p>mysql inodb</p>
-<p>for update  使用规则：
+      <pre><code>
+乐观锁：
+通过版本实现
+
+悲观锁： 通过数据库机制实现
+
+mysql inodb 
+
+for update  使用规则：
 要在事务里面使用，才能锁住所查询的资源，可以是多行
 锁住的是行数据，不只是某个字段，所以如果另一个事务去修改其他字段，也是不行的
-锁的是锁机制，就是说不允许再加锁，并没有锁住查询（正常的查询还是可以查到数据的）</p>
+锁的是锁机制，就是说不允许再加锁，并没有锁住查询（正常的查询还是可以查到数据的）
 
+</code></pre>
     </div>
     <div class="post-footer">
       
