@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Go_context // xietie blog</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.78.2" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://xiet16.github.io/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Go_context"/>
+<meta name="twitter:description" content="* 理解：context 可以理解主要为了处理多个goroutine间保存、读取、中断、取消等操作。 规则： 主要方法： 1 WithValue : 保存信息 2 WithTimeout 3 WithCancel 4 WithDeadline 问题： 它是如何传递到context 中的，它的修改有没有可能产生冲突 */ func ContextWithValueTest() { ctx := context.WithValue(context.Background(), &quot;trace_id&quot;, &quot;11112233&quot;) ctx = context.WithValue(ctx, &quot;cookie&quot;, &quot;aasddget&quot;) GetContextValue(ctx) defer ctx.Done() } /* func (c *cancelCtx) Value(key interface{}) interface{} { if key == &amp;cancelCtxKey { return c } return c.Context.Value(key) } */ //递归式取值 func GetContextValue(ctx context.Context) { v1 := ctx.Value(&quot;trace_id&quot;) v1 = 334355 //这样改变不了它的值 v2 := ctx."/>
+
+    <meta property="og:title" content="Go_context" />
+<meta property="og:description" content="* 理解：context 可以理解主要为了处理多个goroutine间保存、读取、中断、取消等操作。 规则： 主要方法： 1 WithValue : 保存信息 2 WithTimeout 3 WithCancel 4 WithDeadline 问题： 它是如何传递到context 中的，它的修改有没有可能产生冲突 */ func ContextWithValueTest() { ctx := context.WithValue(context.Background(), &quot;trace_id&quot;, &quot;11112233&quot;) ctx = context.WithValue(ctx, &quot;cookie&quot;, &quot;aasddget&quot;) GetContextValue(ctx) defer ctx.Done() } /* func (c *cancelCtx) Value(key interface{}) interface{} { if key == &amp;cancelCtxKey { return c } return c.Context.Value(key) } */ //递归式取值 func GetContextValue(ctx context.Context) { v1 := ctx.Value(&quot;trace_id&quot;) v1 = 334355 //这样改变不了它的值 v2 := ctx." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xiet16.github.io/post/go_context/" />
+<meta property="article:published_time" content="2021-04-07T12:55:42+08:00" />
+<meta property="article:modified_time" content="2021-04-07T12:55:42+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://xiet16.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>xietie blog</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Go_context</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Apr 7, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          2 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <pre><code>
+*
+理解：context 可以理解主要为了处理多个goroutine间保存、读取、中断、取消等操作。
+规则：
+主要方法：
+1 WithValue : 保存信息 
+2 WithTimeout
+3 WithCancel
+4 WithDeadline
+问题： 它是如何传递到context 中的，它的修改有没有可能产生冲突
+*/
+
+func ContextWithValueTest() {
+	ctx := context.WithValue(context.Background(), &quot;trace_id&quot;, &quot;11112233&quot;)
+	ctx = context.WithValue(ctx, &quot;cookie&quot;, &quot;aasddget&quot;)
+	GetContextValue(ctx)
+	defer ctx.Done()
+}
+
+/*
+func (c *cancelCtx) Value(key interface{}) interface{} {
+	if key == &amp;cancelCtxKey {
+		return c
+	}
+	return c.Context.Value(key)
+}
+*/
+//递归式取值
+func GetContextValue(ctx context.Context) {
+	v1 := ctx.Value(&quot;trace_id&quot;)
+	v1 = 334355 //这样改变不了它的值
+	v2 := ctx.Value(&quot;cookie&quot;)
+
+	log.Println(&quot;trace_id value is &quot;, v1)
+	log.Println(&quot;cookie value is &quot;, v2)
+}
+
+type ResponseResult struct {
+	r   *http.Response
+	err error
+}
+
+//可以用来控制goroutine超时，context包中提供的WithTimeout(本质上调用的是WithDeadline) 方法
+func ContextWithTimeoutTest() {
+	ctx, cancle := context.WithTimeout(context.Background(), 60*time.Second)
+	defer cancle()
+
+	tr := &amp;http.Transport{}
+	client := &amp;http.Client{Transport: tr}
+	req, err := http.NewRequest(&quot;GET&quot;, &quot;http://www.baidu.com/&quot;, nil)
+	if err != nil {
+		log.Println(&quot;get request err&quot;, err.Error())
+		return
+	}
+
+	ch := make(chan ResponseResult)
+	go func() {
+		res, err := client.Do(req)
+		pack := ResponseResult{r: res, err: err}
+		ch &lt;- pack
+	}()
+
+	select {
+	case &lt;-ctx.Done():
+		tr.CancelRequest(req)
+		res := &lt;-ch
+		log.Println(&quot;request timeout:&quot;, res.err)
+	case res := &lt;-ch:
+		defer res.r.Body.Close()
+		out, _ := ioutil.ReadAll(res.r.Body)
+		log.Println(&quot;respose data &quot;, out)
+	}
+}
+
+//WithCancel返回一个继承的Context,这个Context在父Context的Done被关闭时关闭自己的Done通道
+//或者在自己被Cancel的时候关闭自己的Done
+//WithCancel同时还返回一个取消函数cancel，这个cancel用于取消当前的Context
+func ContextWithCancelTest() {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+	intchan := GetCancelChan(ctx)
+	for n := range intchan {
+		if n == 5 {
+			log.Println(&quot;break test,n value is:&quot;, n)
+			break
+		}
+	}
+}
+
+func GetCancelChan(ctx context.Context) chan int {
+	intChan := make(chan int)
+	n := 1
+	go func() {
+		for {
+			select {
+			case &lt;-ctx.Done():
+				log.Println(&quot;exit, n value is :&quot;, n)
+			case intChan &lt;- n:
+				n++
+			}
+		}
+	}()
+
+	return intChan
+}
+
+//deadline保存了超时的时间，当超过这个时间，会触发cancel, 如果超过了过期时间，会自动撤销它的子context
+func ContextWithDeadline() {
+	t := time.Now().Add(5 * time.Second)
+	ctx, cancel := context.WithDeadline(context.Background(), t)
+	defer cancel()
+
+	select {
+	case &lt;-time.After(15 * time.Second):
+		log.Println(&quot;time after&quot;)
+	case &lt;-ctx.Done():
+		log.Println(&quot;ctx err :&quot;, ctx.Err())
+	}
+}
+
+
+</code></pre>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

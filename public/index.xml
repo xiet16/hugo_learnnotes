@@ -6,7 +6,16 @@
     <description>Recent content on xietie blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Apr 2021 12:48:29 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Apr 2021 12:55:42 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go_context</title>
+      <link>https://xiet16.github.io/post/go_context/</link>
+      <pubDate>Wed, 07 Apr 2021 12:55:42 +0800</pubDate>
+      
+      <guid>https://xiet16.github.io/post/go_context/</guid>
+      <description>* 理解：context 可以理解主要为了处理多个goroutine间保存、读取、中断、取消等操作。 规则： 主要方法： 1 WithValue : 保存信息 2 WithTimeout 3 WithCancel 4 WithDeadline 问题： 它是如何传递到context 中的，它的修改有没有可能产生冲突 */ func ContextWithValueTest() { ctx := context.WithValue(context.Background(), &amp;quot;trace_id&amp;quot;, &amp;quot;11112233&amp;quot;) ctx = context.WithValue(ctx, &amp;quot;cookie&amp;quot;, &amp;quot;aasddget&amp;quot;) GetContextValue(ctx) defer ctx.Done() } /* func (c *cancelCtx) Value(key interface{}) interface{} { if key == &amp;amp;cancelCtxKey { return c } return c.Context.Value(key) } */ //递归式取值 func GetContextValue(ctx context.Context) { v1 := ctx.Value(&amp;quot;trace_id&amp;quot;) v1 = 334355 //这样改变不了它的值 v2 := ctx.</description>
+    </item>
+    
     <item>
       <title>Go_sync_map</title>
       <link>https://xiet16.github.io/post/go_sync_map/</link>
