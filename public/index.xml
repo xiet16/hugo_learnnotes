@@ -6,7 +6,25 @@
     <description>Recent content on xietie blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Apr 2021 07:35:51 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Apr 2021 12:48:29 +0800</lastBuildDate><atom:link href="https://xiet16.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go_sync_map</title>
+      <link>https://xiet16.github.io/post/go_sync_map/</link>
+      <pubDate>Wed, 07 Apr 2021 12:48:29 +0800</pubDate>
+      
+      <guid>https://xiet16.github.io/post/go_sync_map/</guid>
+      <description>sync 包的map: sync 包中的map 是一个结构体，实现了读写分离 （1）read 实际上是一个readOnly 结构体，readOnly 的m 实际上是一个entry 的键值对集合 // readOnly is an immutable struct stored atomically in the Map.read field. type readOnly struct { m map[interface{}]*entry amended bool // true if the dirty map contains some key not in m. } type entry struct {	p unsafe.Pointer // *interface{} } type Map struct { mu Mutex //优先从read 读取数据，因为它是只读的，所以它是线程安全的 read atomic.Value // readOnly dirty map[interface{}]*entry misses int } atomic 包： type Value struct { v interface{} } // ifaceWords is interface{} internal representation.</description>
+    </item>
+    
+    <item>
+      <title>Go_tools</title>
+      <link>https://xiet16.github.io/post/go_tools/</link>
+      <pubDate>Wed, 07 Apr 2021 12:45:12 +0800</pubDate>
+      
+      <guid>https://xiet16.github.io/post/go_tools/</guid>
+      <description> (1)编译过程 go tool compile -N -l -S main.go (2) 查看内存逃逸 go build -gcflags=-m (3) 查看CPU 和 内存 go tool pprof mem.prof pprof 工具 runtime/pprof 和 net/http/pprof go run main.go -cpuprofile cpu.prof -memprofile mem.prof 查看.prof 文件 go tool pprof mem.prof http://127.0.0.1:8880/debug/pprof go tool pprof http://*:*/debug/pprof/profile 如果你的go程序不是web服务器，而是一个服务进程，那么你也可以选择使用net/http/pprof包，同样引入包net/http/pprof，然后在开启另外一个goroutine来开启端口监听。 比如： go func() { log.Println(http.ListenAndServe(&amp;quot;localhost:6060&amp;quot;, nil)) }() </description>
+    </item>
+    
     <item>
       <title>Go_init</title>
       <link>https://xiet16.github.io/post/go_init/</link>
