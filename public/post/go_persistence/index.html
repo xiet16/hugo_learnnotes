@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Go_persistence // xietie blog</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.78.2" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://xiet16.github.io/css/main.min.88e7083eff65effb7485b6e6f38d10afbec25093a6fac42d734ce9024d3defbd.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Go_persistence"/>
+<meta name="twitter:description" content="redis 持久化 rdb（redis database） 保存文件：dump.rdb 默认模式 15分钟1次 、5分钟 10次 1分钟1w 次 过程：Fork 一个线程执行，Fork 操作会复制主线程，包括其数据，并且作为其子线程 save bgsave : save 会阻塞进程 优势：适合大数据的恢复，响应快 劣势：fork 可能会造成很大的资源消耗，最后一次持久化后的数据有可能丢失 aof(append only file)：以日志的形式记录每一个写操作，只许追加，不许改写 默认不开启 策略：同步操作（appendfsync），always、everysec 、no；默认是每秒一次 如果同时开启了rdb , 默认从aof 读取 rewrite 原理：fork 一个新进程，遍历进程中内存的数据，重新写一个aof 文件 rewrite 触发机制：记录上一次的aof 大小，默认是大于1倍且大于64MB 优势：数据完整性较好，有可能有1秒的数据丢失 劣势： AOF 运行效率要慢于rdb "/>
+
+    <meta property="og:title" content="Go_persistence" />
+<meta property="og:description" content="redis 持久化 rdb（redis database） 保存文件：dump.rdb 默认模式 15分钟1次 、5分钟 10次 1分钟1w 次 过程：Fork 一个线程执行，Fork 操作会复制主线程，包括其数据，并且作为其子线程 save bgsave : save 会阻塞进程 优势：适合大数据的恢复，响应快 劣势：fork 可能会造成很大的资源消耗，最后一次持久化后的数据有可能丢失 aof(append only file)：以日志的形式记录每一个写操作，只许追加，不许改写 默认不开启 策略：同步操作（appendfsync），always、everysec 、no；默认是每秒一次 如果同时开启了rdb , 默认从aof 读取 rewrite 原理：fork 一个新进程，遍历进程中内存的数据，重新写一个aof 文件 rewrite 触发机制：记录上一次的aof 大小，默认是大于1倍且大于64MB 优势：数据完整性较好，有可能有1秒的数据丢失 劣势： AOF 运行效率要慢于rdb " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xiet16.github.io/post/go_persistence/" />
+<meta property="article:published_time" content="2021-04-09T08:36:43+08:00" />
+<meta property="article:modified_time" content="2021-04-09T08:36:43+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://xiet16.github.io"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>xietie blog</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Go_persistence</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Apr 9, 2021
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <pre><code>redis 持久化
+
+rdb（redis database）
+保存文件：dump.rdb
+默认模式 15分钟1次 、5分钟 10次   1分钟1w 次
+过程：Fork 一个线程执行，Fork 操作会复制主线程，包括其数据，并且作为其子线程
+save bgsave : save 会阻塞进程 
+优势：适合大数据的恢复，响应快
+劣势：fork 可能会造成很大的资源消耗，最后一次持久化后的数据有可能丢失
+
+
+aof(append only file)：以日志的形式记录每一个写操作，只许追加，不许改写
+默认不开启
+策略：同步操作（appendfsync），always、everysec 、no；默认是每秒一次
+如果同时开启了rdb , 默认从aof 读取
+rewrite 原理：fork 一个新进程，遍历进程中内存的数据，重新写一个aof 文件
+rewrite 触发机制：记录上一次的aof 大小，默认是大于1倍且大于64MB
+优势：数据完整性较好，有可能有1秒的数据丢失
+劣势： AOF 运行效率要慢于rdb
+
+</code></pre>
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
